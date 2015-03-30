@@ -1,0 +1,29 @@
+Modulation
+
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+Taking encoded bits and mapped into constellation symbol
+
+Support: BPSK/ QPSK/ 16QAM/ 64QAM
+
+Modulating(FIFO<int> *pInpBuf, FIFO<complex<float> > *pOutBuf)
+
+Modulate on input data
+
+
+
+Demodulation
+
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+Taking complex symbols and generate Log Likelihood Ratio(LLR) for each bit
+Assing AWGN level is known to demodulation(set awgnSigma = 0 if no AWGN is applied)
+
+1. Demodulating(FIFO<complex<float> > *pInpBuf, FIFO<float> *pOutBuf,float awgnSigma)
+   Generate LLR for input data
+
+2. Demodulating(FIFO<complex<float> > *pInpBuf, FIFO<float> *pOutBuf, complex<float> ***pEqW, complex<float> ***pHdm, float awgn Sigma)
+   Generate LLR with aided information (SCFDMA: weight on each subchannel and equalizer matrix: this method keeps diversity gain)  
+   

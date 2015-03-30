@@ -1,0 +1,25 @@
+Equalizer
+
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+Estimate channel state information by the received pilot signal(the pilot signal is known to Equalizer)
+Equalize the received data using channel state information(either from above estimation or from input perfect channel state information)
+
+1. Equalizing(FIFO<complex<float> > *pInpBuf,FIFO<complex<float> > *pOutBuf)
+
+   Perform frequency domain least square channel estimator
+   Perform frequency domain least square equalizer(NOTE: this method takes least computation but it kills channel diversity gain)
+
+2. Equalizing(FIFO<complex<float> > *pInpBuf,FIFO<complex<float> > *pOutBuf, complex<float> ***pPCSI, float AWGNNo)
+
+   Taking perfect channel state information and AWGNNo (does not need to channel estimator)
+   Perform minimum mean square error estimator(NOTE: this method keeps channel diversity gain when it has comparative accurate channel state information and it takes more computation)
+
+3. GetpEqW() 
+
+   Return the Equlizer matrix which might be used as aided information for demodulation
+
+4. GetpHdm() (for SCFDMA system)
+ 
+   Return the Channel weight on each subcarrier which might be used as aided information for demodulation 

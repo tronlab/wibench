@@ -1,0 +1,33 @@
+Tx RateMatch:
+Accept R's (R=Channel Code Rate) coded streams from channel encoder
+Interleave each code stream
+Generate one output stream in subframe format (may add redundant bits)
+
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+1.TxRateMatching(FIFO<int> *pInBuf, FIFO<int> *pOutBuf)
+  Doing Tx rate matching on input data
+  
+2.GetpEncS()
+  Return the pointer to Encoded sequence (the sequence without adding redundant bits)
+  This one can be used to calculate hard bit error with RxRateMatch::GetpHD()
+
+
+
+Rx RateMatch:
+
+Seperate one input streams into R's (R=Channel Code Rate)
+Deinterleave each code stream 
+Remove redundant bits
+
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+1.RxRateMatching(FIFO<float> *pInBuf,FIFO<float> *pOutBuf)
+  Doing Rx rate matching on input data
+
+2.GetpHD()
+  Return the pointer to hard decoded sequence(already removed redundant bits)
+  This one can be used to calculate hard bit error with RxRateMatch::GetpEncS()
+

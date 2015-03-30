@@ -1,0 +1,16 @@
+SCFDMAModulation/SCFDMADemodulation
+
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+Parts of Single-carrier Frequency Division Multiple Access Scheme (SC-FDMA Scheme=SCFDMA+ Transform Precoder) 
+This part can be used as OFDM system(SC-FDMA and OFDM share this part) 
+
+SCFDMAModulating(FIFO<complex<float> > *pInpBuf, FIFO<complex<float> > *pOutBuf)
+SC-FDMA baseband singal generation : N-point IFFT and add Cyclic Prefix
+
+
+SCFDMADemodulating(FIFO<complex<float> > *pInpBuf, FIFO<complex<float> > *pOutBuf)
+Inverse of SCFDMAModulation: Remove Cyclic Prefix and N-point FFT
+
+

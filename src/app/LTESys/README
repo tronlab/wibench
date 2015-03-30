@@ -1,0 +1,2 @@
+This fucntion performs the LTE uplink system, starting from Channel Encoder and ending at Channel Decoder.
+It is able to calculate system performance in terms of Bit Error Rate and Packet Error Rate.

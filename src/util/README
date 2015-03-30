@@ -1,0 +1,76 @@
+All of these are set for single user system
+Tx:  Transmitter 
+Rx:  Receiver
+
+
+BSPara:
+Set Base State Parameters
+NumULSymbSF		:= # of SCFDMA/OFDM symbol in each subframe(LTE: this value is 14)
+
+NIFFT			:= # of subcarriers in SCFDMA/OFDM symbol
+
+CPLen			:= # of Cyclic Prefix in subcarriers
+
+RSU,RSV			:= used to generate pilot symbol
+
+DMRSSymbPos		:= indicate the polit position in subframe
+
+SCLocPatter		:= indicate the starting position of continuous data subcarrier allocation
+
+MDFTPerUser		:= # of subcarrier that performing FFT/IFFT in TransformPrecoder/Decoder(part of SCFDMA scheme)
+
+MQAMPerUser		:= constellation mapping scheme
+
+NumLayerPerUser		:= # of Layers in Tx (= # of transmit antenna)
+
+DataLengthPerUser	:= # of information bits that feeding into Turbo Encoder
+
+EstimationMethod	:= indicating estimation method(trivial one)
+
+NumRxAntenna		:= # of Rx antenna
+
+ProcessingStatusFlag	:= true(print current processing block): false(no information printing when processing inside block)
+
+BSParameterPringFlag	:= true(print BS paramters) : false(do not print BS parameters)
+
+BufferSizeFlag	 	:= true(print all input/output buffer size for each block) : false(do not print input/output buffer for each block)
+
+initBSPara()		:= initialize BSPara(to set BSParameters,rewrite BSPara.cpp)
+
+
+UserPara
+
+Most User parameters are copies of BS parameters
+
+Here lists the own parameters set in Userpara
+
+ncs[2]			:= used when generating pilot signal
+
+NInfoBits		:= # of information bits in each layer in one subframe
+
+QAMLen			:= length of complex symbol sequence in each layer in one subframe
+
+GetpDMRS()		:= function used to generate pilot signal
+
+
+
+GeneralFunc
+
+ReadInputFromFiles(pIn,Sz[2],name) 		: read input from file"name" into buffer pIn with size Sz[2]
+
+GeneRandomInput(pIn,Sz[2],name)			: generate random input into buffer pIn with size Sz[2] and write the input into file"name"
+
+GeneRandomInput(pIn,Sz[2],name)			: Only generate random input into buffer pIn with size Sz[2]
+
+WriteOutputToFiles(pOut,Sz[2],name)		: read output from buffer pOut with size Sz[2] and write them into file"name"
+
+WriteOutputToFiles(pOut,Sz[2],nameReal,nameImag): read output from buffer pOut with size Sz[2] and write real part of data into file"nameReal", write imag part of data into file"nameImag"
+
+ReadOutput(pOut,Sz[2])				: Only read output from buffer pOut with size Sz[2]
+
+GenerateLTEChainInput(pDataSource,DataK,pTxDS)	: generate length DataK information bits write them to buffer pDataSource and also store them in array pTxDS(pTxDS can be used to calculate information bit error rate with pRxFS in the follwing function)
+
+ReadLTEChainOutput(pFileSink,pRxFS)		: read output decoded bits from buffer pFileSink and store them into array pRxFS (with pTxDS above together to calculate bit error rate)
+
+
+matrix.x FIFO.x matrix.x are used inside kernels providing supported functions

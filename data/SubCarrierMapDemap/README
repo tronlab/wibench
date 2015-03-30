@@ -1,0 +1,11 @@
+SubCarrierMap/Demap
+
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+SubCarrierMapping(FIFO<complex<float> > *pInpBuf,FIFO<complex<float> > *pOutBuf)
+Map data symbol to sub-carriers (with given pattern=> in this code, allocate data to subcarriers continuously starting from SCLoc)
+Insert pilot symbol into subframe (The pilot signal accupy middle OFDM symbol every slot: two slots= one subframe)
+
+SubCarrierDemapping(FIFO<complex<float> > *pInpBuf, FIFO<complex<float> > *pOutBuf);
+Extract data symbol and pilot symbol from subframe

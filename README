@@ -1,0 +1,72 @@
+Welcome to WiBench (Y-bench), an open-source configurable kernel suite for benchmarking wireless communication systems.
+It contains the key signal processing kernels in several mainstream wireless protocols, and a complete LTE uplink system.
+WiBench provide an easy configurable interface that users can easily change configurations and put kernels together to build their own systems.
+
+This version of WiBench has been tested with gcc-4.5, 4.6, 4,7 and fftw-3.
+
+Please see the license notice in the file LICENSE in the root directory of WiBench. 
+
+This file contains instructions on downloading, building and running WiBench. 
+More information about WiBench design philosiphy, kernel introduction and profiling performance can be found on the WiBench website (http://wibench.eecs.umich.edu).
+
+If you have questions, please contact with the designers on the WiBench website.
+Questions answered on a best effort basis.
+
+See file CHANGES for updates in all versions.
+
+1. DOWNLOAD
+========================
+Option 1:
+  Go to http://wibench.eecs.umich.edu/download, and get the zipped source code.
+
+Option 2:
+  //TODO
+  Github
+git clone git://dev.ece.ubc.ca/gpgpu-sim
+
+2. BUILD WiBench
+========================
+a) Dependencies
+WiBench is developed on Ubuntu Linux, and has been used on Ubuntu 12.04, 12.10 and 13.04. 
+In principle, WiBench should work with any linux distribution as long as the following software dependencies are satisfied. 
+Here is a list of required softwares to build and run WiBench.
+* gcc
+* g++
+* make
+* libfftw-3
+
+The fftw-3 library is highly recommended to be installed through the package manager of the operating system. 
+For Ubuntu users, please install fftw-3 library through "apt-get install libfftw3".
+The self-built fftw-3 library from the source code downloaded from the FFTW website has not been tested. 
+So it is possible that the current version of WiBench is not compitable with it. 
+We are still working on it, and will provide a more portable version of WiBench.
+
+b) Compiling
+Assuming all dependencies required by WiBench are installed on your system, to compile WiBench all you first need to add the following line to your ~/.bashrc file (assuming the WiBench root directory is in /home/user/wibench/):
+
+  export WiBench_INSTALL_DIR=/home/user/wibench/
+
+then, choose the category you want to build: 
+1) for kernels, run 
+
+make kernel
+
+2) for app, run 
+
+make app
+
+3) for all, run 
+
+make
+
+4) To clean the build, run 
+
+make clean
+
+3. RUN WiBench 
+========================
+The executable files are stored in $(wibench_root)/build.
+Each kernel has two running modes: with random inputs and with reference inputs. 
+
+4. Directory Structure 
+========================

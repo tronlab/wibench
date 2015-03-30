@@ -1,0 +1,11 @@
+Scramble/Descramble
+
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+
+Scrambling(FIFO<int> *pInpBuf, FIFO<int> *pOutBuf)
+Scramble input sequence
+
+Descramble(FIFO<float> *pInpBuf, FIFO<float> *pOutBuf)
+Descramble input sequence

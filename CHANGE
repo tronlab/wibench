@@ -1,0 +1,6 @@
+LOG:
+v1.0
+- Add this file for change logging.
+- Add README in the root dir. 
+- Remove ./doc/
+- Change the installationg directory variable definition from makefile.config to the environment variable. Need to define it in .bashrc now. 

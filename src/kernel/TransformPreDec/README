@@ -1,0 +1,13 @@
+TransformPrecoder/Decoder
+
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+This is part of SC-FDMA scheme. (The other part if SCFDMAModulation/Demodulation)
+
+TransformPrecoding(FIFO<complex<float> > *pInpBuf, FIFO<complex<float> > *pOutBuf)
+Perform M-point FFT at Tx
+
+TransformDecoding(FIFO<complex<float> > *pInpBuf, FIFO<complex<float> > *pOutBuf)
+Perform M-point IFFT at Rx
+

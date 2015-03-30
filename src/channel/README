@@ -1,0 +1,27 @@
+This kernel is to provide different kinds of channels
+
+1.Channel(BSPara* pBS)
+ChannelLen:  channel length
+ChannelType: 1: Gaussian Random Channel   2:EVA model    default: Delta Channel(no fading)
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+2.ApplyChannel(FIFO<complex<float> >*pInpBuf, FIFO<complex<float> >*pOutBuf)
+  pInBuf: input FIFO  pOutBuf: output FIFO
+  
+  This one will only apply fading or delta channel on input data
+
+3.ApplyChannel(FIFO<complex<float> >*pInBuf, FIFO<complex<float> >*pOutBuf, float AWGNSigma)
+  
+  This one will apply fading or delta channel on input data and add AWGN with No = 2*(AWGNSigma)^2;
+
+4.GetpPCSI()
+  Return pointer to PCSI -- Perfect Channel State Information--
+  this information can be used in Equalizer
+
+5.GetAWGNNo()
+  Return the value of AWGN No
+
+  
+
+

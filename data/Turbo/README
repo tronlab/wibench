@@ -1,0 +1,21 @@
+TurboEncoder/Decoder
+
+InBufSz[2]:  define the input buffer size which is a InBufSz[0]-by-InBufSz[1] matrix
+OutBufSz[2]: define the output buffer size which is a OutBufSz[0]-by-OutBufSz[1] matrix
+
+Rate:= 1/3 Turbo Code
+FSM : define this Turbo Code is in "rsc.txt"
+iterations:= iteration number of SISO(Soft Input Soft Output) algorithms
+ST10:forward starting state for first SISO   ST1K: forward ending state for first SISO
+ST20:backward starting state for second SISO  ST2K: backward ending state for second SISO  
+(Since we always start at 0 state in Encoder and we have tail bits which enforce the last state into 0: All of above parameters are set to 0)
+
+
+TurboEncoding(FIFO<int> *pInpBuf, FIFO<int> *pOutBuf)
+Taking information bit stream and generate Rate's output stream: the 1st stream is systematic bits and the others are parity check bits
+
+
+TurboDecoding(FIFO<float> *pInpBuf, FIFO<int> *pOutBuf)
+Taking soft information for each code (in WiBench, it's LLR) and applying iterative SISO algorithm
+
+
