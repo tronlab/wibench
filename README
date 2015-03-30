@@ -20,9 +20,7 @@ Option 1:
   Go to http://wibench.eecs.umich.edu/download, and get the zipped source code.
 
 Option 2:
-  //TODO
-  Github
-git clone git://dev.ece.ubc.ca/gpgpu-sim
+  git clone http://github.com/tronlab/wibench.git
 
 2. BUILD WiBench
 ========================
